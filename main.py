@@ -1,10 +1,12 @@
+import time
 import aiohttp
 from bs4 import BeautifulSoup
 import discord
 
 settings = {
-    'token': 'bottoken',
-    'bot': 'botname',
+    'token': 'None', #Discord bot token
+    'bot': 'None', #Discord bot name
+    'id': 0, #Channel ID
 }
 
 client = discord.Client()
@@ -33,6 +35,7 @@ async def on_ready():
                 print('{} | Send new message'.format(client.user))
                 await send_message(client, tables[i])
         tables_data = tables
+        time.sleep(10)
 
 async def send_message(client, message):
     channel = client.get_channel(int(settings['id']))
@@ -64,7 +67,7 @@ async def send_message(client, message):
                 tech_name=less['techer_name'],
                 classrom=less['classroom'],
             )
-        embed.description += '_[Закинуть на оплату хостинга(ЮMoney)](https://yoomoney.ru/to/4100116286956555)\n[Проект на Github](https://github.com/lastwek1/opk_parser/)\nРазработчик: [lastwek](https://t.me/lastwek)_'
+        embed.description += '*[Закинуть на оплату хостинга(ЮMoney)](https://yoomoney.ru/to/4100116286956555)\n[Проект на Github](https://github.com/lastwek1/opk_parser/)\nРазработчик: [lastwek](https://t.me/lastwek)*'
     await channel.send(embed=embed)
 
 async def get_html(url):
