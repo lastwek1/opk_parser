@@ -64,6 +64,7 @@ async def send_message(client, message):
                 tech_name=less['techer_name'],
                 classrom=less['classroom'],
             )
+        embed.description += '_[Закинуть на оплату хостинга(ЮMoney)](https://yoomoney.ru/to/4100116286956555)\n[Проект на Github](https://github.com/lastwek1/opk_parser/)\nРазработчик: [lastwek](https://t.me/lastwek)_'
     await channel.send(embed=embed)
 
 async def get_html(url):
