@@ -1,13 +1,10 @@
 import aiohttp
 from bs4 import BeautifulSoup
 import discord
-import time
 
 settings = {
-    'token': 'OTQ0Njc3MTYxMTc5MTg1MTky.YhFFKg.QPw7HBIyj_2KxdlaNrlJT-vPddI',
-    'bot': 'psychoребёнок#2508',
-    'id': 944339700339060737,
-    'prefix': '$'
+    'token': 'bottoken',
+    'bot': 'botname',
 }
 
 client = discord.Client()
