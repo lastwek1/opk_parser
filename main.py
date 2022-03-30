@@ -31,10 +31,10 @@ async def on_ready():
                 else:
                     print('{} | Send new message'.format(client.user))
                     await send_message(client, tables[i])
+                    tables_data[i] = tables[i]
             else:
                 print('{} | Send new message'.format(client.user))
                 await send_message(client, tables[i])
-        tables_data = tables
         time.sleep(10)
 
 async def send_message(client, message):
