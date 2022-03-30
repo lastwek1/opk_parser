@@ -2,12 +2,7 @@ import time
 import aiohttp
 from bs4 import BeautifulSoup
 import discord
-
-settings = {
-    'token': 'None', #Discord bot token
-    'bot': 'None', #Discord bot name
-    'id': 0, #Channel ID
-}
+from settings import settings
 
 client = discord.Client()
 
@@ -21,7 +16,7 @@ async def on_ready():
         colour=discord.Colour.from_rgb(106, 192, 245)
     )
     await channel.send(embed=embed)
-    tables_data = []
+    tables_data = [0, 0, 0]
     while True:
         tables = getter_tables(await get_html('http://opk.sf-misis.ru/?act=2&id=522'))
         for i in range(len(tables)):
@@ -31,11 +26,11 @@ async def on_ready():
                 else:
                     print('{} | Send new message'.format(client.user))
                     await send_message(client, tables[i])
-                    tables_data[i] = tables[i]
             else:
                 print('{} | Send new message'.format(client.user))
                 await send_message(client, tables[i])
-        time.sleep(10)
+            tables_data[i] = tables[i]
+        time.sleep(120)
 
 async def send_message(client, message):
     channel = client.get_channel(int(settings['id']))
